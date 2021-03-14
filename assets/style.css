@@ -2,6 +2,11 @@
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgb(196, 220, 228);
 }
 
 header {
@@ -44,4 +49,34 @@ aside {
     border: solid 2px;
     padding: 5px;
     margin: 5px;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(83, 83, 192);
+    margin: 10px;
+    padding:10px;
+    border-radius: 10%;
+    color: white;
+}
+
+#forcastCards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.good {
+    background-color: green;
+    width: 125px;
+}
+
+.moderate {
+    background-color: yellow;
+    width: 125px;
+}
+
+.bad {
+    background-color: red;
+    width: 125px;
 }
