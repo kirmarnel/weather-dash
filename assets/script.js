@@ -23,39 +23,12 @@ var iconThree = document.querySelector('#iconThree')
 var iconFour = document.querySelector('#iconFour')
 var iconFive = document.querySelector('#iconFive')
 
-//Local Storage
-searchInput.value=""
-var histArray = []
-var history = document.querySelector('#history')
-function renderHistory() {
-    for (var i=0; i>histArray.length; i++) {
-        var histArray=histArray[i]
-
-        var li = document.createElement('li');
-        li.textContent=histArray;
-        li.setAttribute('data-index' , i);
-    
-        history.appendChild(li);
-    } 
-}
-function init(){
-    var storedHistory = JSON.parse(localStorage.getItem('histArray'))
-
-    if (storedHistory !==null) {
-        histArray=storedHistory
-    }
-    renderHistory()
-}
-
-function storeHistory() {
-    localStorage.setItem('histArray' , JSON.stringify(histArray));
-}
 
 //Call for current weather
 searchBtn.addEventListener('click', function(){
     var city = searchInput.value
-    var currentUrl = 'http://api.openweathermap.org/data/2.5/weather?q='+ city +'&units=imperial&appid=96d6bb7f498a2f8b196feb76deb7f7e8';
-    var fiveDayUrl = 'http://api.openweathermap.org/data/2.5/forecast?q='+ city +'&units=imperial&appid=96d6bb7f498a2f8b196feb76deb7f7e8'
+    var currentUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+ city +'&units=imperial&appid=96d6bb7f498a2f8b196feb76deb7f7e8';
+    var fiveDayUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+ city +'&units=imperial&appid=96d6bb7f498a2f8b196feb76deb7f7e8'
     fetch(currentUrl).then(function(response){
         response.json().then(function (data) {
             console.log(data)
@@ -124,25 +97,6 @@ searchBtn.addEventListener('click', function(){
         })
     })
     })
-//Call Local Storage
-var searchText = searchInput.value.trim()
-
-if (searchText===""){
-    return;
-}
-histArray.push(searchText);
-searchInput.value="";
-
-storeHistory()
-renderHistory()
-
 
 })
 
-document.querySelector('#dateOne').textContent=day1;
-    document.querySelector('#dateTwo').textContent=day2;
-    document.querySelector('#dateThree').textContent=day3;
-    document.querySelector('#dateFour').textContent=day4;
-    document.querySelector('#dateFive').textContent=day5;
-
-    init()

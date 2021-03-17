@@ -7,7 +7,7 @@ For this project I have created a weather dashboard using the OpenWeather API. W
 ![Screenshot1](assets/Demo.png) 
 --
 ## Challenges 
-My biggest challenge with this project was the local storage. The goal was to have a persistent search history of the recently searched cities. I was unable to get this to work. I also struggled with the UV index, but ultimitely got that working.
+My biggest challenge with this project was the local storage aspect. The goal was to have a persistent search history of the recently searched cities. I was unable to get this to work. I also struggled with the UV index, but ultimitely got that working.
 --
 ## Deployment Link
 https://kirmarnel.github.io/weather-dash/
