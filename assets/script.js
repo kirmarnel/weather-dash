@@ -41,7 +41,7 @@ searchBtn.addEventListener('click', function(){
             icon.setAttribute('src' , iconUrl)
             var lat = data.coord.lat
             var lon =data.coord.lon
-            var uvUrl = 'http://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + lon + '&appid=96d6bb7f498a2f8b196feb76deb7f7e8'
+            var uvUrl = 'https://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + lon + '&appid=96d6bb7f498a2f8b196feb76deb7f7e8'
             fetch(uvUrl).then(function(response){
                 response.json().then(function(data){
                     uv.textContent='UV Index: '+ data.value
