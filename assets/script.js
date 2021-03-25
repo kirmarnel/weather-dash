@@ -1,8 +1,8 @@
 //Current weather variables
 var searchBtn = document.querySelector('#searchBtn');
 var searchInput = document.querySelector('#searchInput'); 
+var cityName = document.querySelector('#cityName')
 var forcast = document.querySelector('#forcast');
-var cityName = document.querySelector('#cityName');
 var date = document.querySelector('#date');
 var temp = document.querySelector('#temp');
 var hum = document.querySelector('#hum');
@@ -23,6 +23,7 @@ var iconThree = document.querySelector('#iconThree')
 var iconFour = document.querySelector('#iconFour')
 var iconFive = document.querySelector('#iconFive')
 
+getSearches()
 
 //Call for current weather
 searchBtn.addEventListener('click', function(){
@@ -96,7 +97,61 @@ searchBtn.addEventListener('click', function(){
             iconFive.setAttribute('src', iconUrlFive)
         })
     })
-    })
+    })  
 
 })
 
+searchBtn.addEventListener('click', addSearch)
+
+function addSearch(){
+    var newSearch = document.createElement('li')
+    newSearch.innerText=searchInput.value
+    historyDiv.appendChild(newSearch);
+    saveSearch(searchInput.value);
+    searchInput.value=""
+}
+
+function saveSearch(search) {
+    var searches;
+    if(localStorage.getItem('searches') === null){
+        searches=[];
+    }
+    else {
+        searches = JSON.parse(localStorage.getItem('searches'));
+    }
+    searches.push(search);
+    localStorage.setItem('searches', JSON.stringify(searches))
+}
+
+function getSearches() {
+    var searches;
+    var city = searchInput.value
+    if(localStorage.getItem('searches') === null){
+        searches=[];
+    }
+    else {
+        searches = JSON.parse(localStorage.getItem('searches'));
+    }
+    for (var i=0; i<searches.length; i++){
+        var historyDiv = document.querySelector('#historyDiv')
+        var newSearch = document.createElement('li')
+        var currentCity = searches[i]
+        newSearch.setAttribute('id' , currentCity)
+        newSearch.addEventListener('click', function(event){
+            searchInput.value=event.target.getAttribute('id')
+            })
+        newSearch.innerText=searches[i]
+        historyDiv.appendChild(newSearch); 
+    }
+    
+}     
+    
+
+
+
+
+document.querySelector('#dateOne').textContent=day1
+document.querySelector('#dateTwo').textContent=day2
+document.querySelector('#dateThree').textContent=day3
+document.querySelector('#dateFour').textContent=day4
+document.querySelector('#dateFive').textContent=day5
